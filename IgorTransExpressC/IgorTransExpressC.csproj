@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA5E3025-F475-4CB5-A286-07C555961B0D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IgorTransExpressC</RootNamespace>
+    <AssemblyName>IgorTransExpressC</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>IgorTransExpressC.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DemoCommon, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\DemoCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.1.1\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialSkin">
+      <HintPath>..\..\..\..\..\..\MaterialSkin.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.1.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.1.1\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.BulletGraph.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.BulletGraph.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Calculate.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Calculate.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Calculate.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Chart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Chart.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Chart.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Diagram.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Utility.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Diagram.Utility.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Diagram.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Diagram.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DICOM.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.DICOM.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.DocIO.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocToPDFConverter.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Edit.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Edit.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ExcelToPDFConverter.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Gauge.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Gauge.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Grouping.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Grouping.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Grouping.Windows.XmlSerializers, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Grouping.Windows.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows.XmlSerializers, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grid.Windows.XmlSerializers.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridConverter.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.GridConverter.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.GridHelperClasses.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.GridHelperClasses.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grouping.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grouping.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Grouping.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HtmlConverter.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.HtmlConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.HTMLUI.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HTMLUI.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.HTMLUI.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Linq.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Linq.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Maps.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Maps.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.MIME.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.MIME.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OCRProcessor.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.OCRProcessor.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChart.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.OfficeChart.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Olap.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Olap.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.OlapSampleUtils, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.OlapSampleUtils.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Pdf.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PdfViewer.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PivotAnalysis.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PivotAnalysis.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PivotAnalysis.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PivotChart.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PivotChart.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PivotConverter.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PivotConverter.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PMML.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PMML.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Presentation.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Presentation.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PresentationToPdfConverter.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ProjIO.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.ProjIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Schedule.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Schedule.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Scripting.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Scripting.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Scripting.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Scripting.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfBarcode.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.SfBarcode.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SfChart.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.SfChart.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Shared.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.SpellChecker.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Spreadsheet.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Spreadsheet.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SpreadsheetHelper.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.SpreadsheetHelper.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Tools.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.TreeMap.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.TreeMap.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Windows, Version=15.3460.0.26, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\15.3.0.26\Assemblies\4.6\Syncfusion.XlsIO.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="company.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompanyInfo.Designer.cs">
+      <DependentUpon>CompanyInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="customer.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerMaintenance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerMaintenance.Designer.cs">
+      <DependentUpon>CustomerMaintenance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerSearch.Designer.cs">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="database_firewall_rules.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Enums.cs" />
+    <Compile Include="FormHelper.cs" />
+    <Compile Include="IgorTransExpress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IgorTransExpress.Designer.cs">
+      <DependentUpon>IgorTransExpress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="igorTransModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>igorTransModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="igorTransModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="igorTransModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>igorTransModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="invdet.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="invoice.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Invoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoices.Designer.cs">
+      <DependentUpon>Invoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security.cs" />
+    <Compile Include="Sql.cs" />
+    <Compile Include="user.cs">
+      <DependentUpon>igorTransModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UsersInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersInfo.Designer.cs">
+      <DependentUpon>UsersInfo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CompanyInfo.resx">
+      <DependentUpon>CompanyInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerMaintenance.resx">
+      <DependentUpon>CustomerMaintenance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomerSearch.resx">
+      <DependentUpon>CustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IgorTransExpress.resx">
+      <DependentUpon>IgorTransExpress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoices.resx">
+      <DependentUpon>Invoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UsersInfo.resx">
+      <DependentUpon>UsersInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="igorTransModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>igorTransModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ConString.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="igorTransModel.edmx.diagram">
+      <DependentUpon>igorTransModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ico_gRO_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\target.png" />
+    <None Include="Resources\signature.png" />
+    <None Include="Resources\presentation.png" />
+    <None Include="Resources\pie-chart.png" />
+    <None Include="Resources\phone.png" />
+    <None Include="Resources\industry.png" />
+    <None Include="Resources\increase.png" />
+    <None Include="Resources\id-card.png" />
+    <None Include="Resources\decrease.png" />
+    <None Include="Resources\company-building.png" />
+    <None Include="Resources\bulb.png" />
+    <None Include="Resources\briefcase.png" />
+    <None Include="Resources\bar-chart.png" />
+    <None Include="Resources\yen.png" />
+    <None Include="Resources\wallet-2.png" />
+    <None Include="Resources\wallet-1.png" />
+    <None Include="Resources\wallet.png" />
+    <None Include="Resources\time-passing.png" />
+    <None Include="Resources\time-is-money.png" />
+    <None Include="Resources\suitcase-2.png" />
+    <None Include="Resources\suitcase-1.png" />
+    <None Include="Resources\suitcase.png" />
+    <None Include="Resources\strongbox.png" />
+    <None Include="Resources\store-3.png" />
+    <None Include="Resources\store-2.png" />
+    <None Include="Resources\store-1.png" />
+    <None Include="Resources\store.png" />
+    <None Include="Resources\stand.png" />
+    <None Include="Resources\stamp-1.png" />
+    <None Include="Resources\stamp.png" />
+    <None Include="Resources\safebox-4.png" />
+    <None Include="Resources\safebox-3.png" />
+    <None Include="Resources\safebox-2.png" />
+    <None Include="Resources\safebox-1.png" />
+    <None Include="Resources\safebox.png" />
+    <None Include="Resources\rich.png" />
+    <None Include="Resources\rewind-time.png" />
+    <None Include="Resources\record.png" />
+    <None Include="Resources\receipt.png" />
+    <None Include="Resources\price-tag-9.png" />
+    <None Include="Resources\price-tag-8.png" />
+    <None Include="Resources\price-tag-7.png" />
+    <None Include="Resources\price-tag-6.png" />
+    <None Include="Resources\price-tag-5.png" />
+    <None Include="Resources\price-tag-4.png" />
+    <None Include="Resources\price-tag-3.png" />
+    <None Include="Resources\price-tag-2.png" />
+    <None Include="Resources\price-tag-1.png" />
+    <None Include="Resources\price-tag.png" />
+    <None Include="Resources\presentation-19.png" />
+    <None Include="Resources\presentation-18.png" />
+    <None Include="Resources\presentation-17.png" />
+    <None Include="Resources\presentation-16.png" />
+    <None Include="Resources\presentation-15.png" />
+    <None Include="Resources\presentation-14.png" />
+    <None Include="Resources\presentation-13.png" />
+    <None Include="Resources\presentation-12.png" />
+    <None Include="Resources\presentation-11.png" />
+    <None Include="Resources\presentation-10.png" />
+    <None Include="Resources\presentation-9.png" />
+    <None Include="Resources\presentation-8.png" />
+    <None Include="Resources\presentation-7.png" />
+    <None Include="Resources\presentation-6.png" />
+    <None Include="Resources\presentation-5.png" />
+    <None Include="Resources\presentation-4.png" />
+    <None Include="Resources\presentation-3.png" />
+    <None Include="Resources\presentation-2.png" />
+    <None Include="Resources\presentation-1.png" />
+    <None Include="Resources\poor.png" />
+    <None Include="Resources\point-of-service.png" />
+    <None Include="Resources\piggy-bank-1.png" />
+    <None Include="Resources\piggy-bank.png" />
+    <None Include="Resources\pie-chart-6.png" />
+    <None Include="Resources\pie-chart-5.png" />
+    <None Include="Resources\pie-chart-4.png" />
+    <None Include="Resources\pie-chart-3.png" />
+    <None Include="Resources\pie-chart-2.png" />
+    <None Include="Resources\pie-chart-1.png" />
+    <None Include="Resources\pack.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\notes-2.png" />
+    <None Include="Resources\notes-1.png" />
+    <None Include="Resources\notes.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\megaphone.png" />
+    <None Include="Resources\justice-scale.png" />
+    <None Include="Resources\justice.png" />
+    <None Include="Resources\investment.png" />
+    <None Include="Resources\insert-coin.png" />
+    <None Include="Resources\grocery-1.png" />
+    <None Include="Resources\grocery.png" />
+    <None Include="Resources\graph-8.png" />
+    <None Include="Resources\graph-7.png" />
+    <None Include="Resources\graph-6.png" />
+    <None Include="Resources\graph-5.png" />
+    <None Include="Resources\graph-4.png" />
+    <None Include="Resources\graph-3.png" />
+    <None Include="Resources\graph-2.png" />
+    <None Include="Resources\graph-1.png" />
+    <None Include="Resources\graph.png" />
+    <None Include="Resources\get-money.png" />
+    <None Include="Resources\folder-1.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\diagram-3.png" />
+    <None Include="Resources\diagram-2.png" />
+    <None Include="Resources\diagram-1.png" />
+    <None Include="Resources\diagram.png" />
+    <None Include="Resources\delivery-cart-1.png" />
+    <None Include="Resources\delivery-cart.png" />
+    <None Include="Resources\credit-card-6.png" />
+    <None Include="Resources\credit-card-5.png" />
+    <None Include="Resources\credit-card-4.png" />
+    <None Include="Resources\credit-card-3.png" />
+    <None Include="Resources\credit-card-2.png" />
+    <None Include="Resources\credit-card-1.png" />
+    <None Include="Resources\credit-card.png" />
+    <None Include="Resources\crate-5.png" />
+    <None Include="Resources\crate-4.png" />
+    <None Include="Resources\crate-3.png" />
+    <None Include="Resources\crate-2.png" />
+    <None Include="Resources\crate-1.png" />
+    <None Include="Resources\crate.png" />
+    <None Include="Resources\coins-1.png" />
+    <None Include="Resources\coins.png" />
+    <None Include="Resources\coin-10.png" />
+    <None Include="Resources\coin-9.png" />
+    <None Include="Resources\coin-8.png" />
+    <None Include="Resources\coin-7.png" />
+    <None Include="Resources\coin-6.png" />
+    <None Include="Resources\coin-5.png" />
+    <None Include="Resources\coin-4.png" />
+    <None Include="Resources\coin-3.png" />
+    <None Include="Resources\coin-2.png" />
+    <None Include="Resources\coin-1.png" />
+    <None Include="Resources\coin.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\change.png" />
+    <None Include="Resources\cashier-1.png" />
+    <None Include="Resources\cashier.png" />
+    <None Include="Resources\cart-17.png" />
+    <None Include="Resources\cart-16.png" />
+    <None Include="Resources\cart-15.png" />
+    <None Include="Resources\cart-14.png" />
+    <None Include="Resources\cart-13.png" />
+    <None Include="Resources\cart-12.png" />
+    <None Include="Resources\cart-11.png" />
+    <None Include="Resources\cart-10.png" />
+    <None Include="Resources\cart-9.png" />
+    <None Include="Resources\cart-8.png" />
+    <None Include="Resources\cart-7.png" />
+    <None Include="Resources\cart-6.png" />
+    <None Include="Resources\cart-5.png" />
+    <None Include="Resources\cart-4.png" />
+    <None Include="Resources\cart-3.png" />
+    <None Include="Resources\cart-2.png" />
+    <None Include="Resources\cart-1.png" />
+    <None Include="Resources\cart.png" />
+    <None Include="Resources\calculator.png" />
+    <None Include="Resources\briefcase-1.png" />
+    <None Include="Resources\box-3.png" />
+    <None Include="Resources\box-2.png" />
+    <None Include="Resources\box-1.png" />
+    <None Include="Resources\box.png" />
+    <None Include="Resources\basket-2.png" />
+    <None Include="Resources\basket-1.png" />
+    <None Include="Resources\basket.png" />
+    <None Include="Resources\barcode-1.png" />
+    <None Include="Resources\barcode.png" />
+    <None Include="Resources\barbershop.png" />
+    <None Include="Resources\bank.png" />
+    <None Include="Resources\bag-6.png" />
+    <None Include="Resources\bag-5.png" />
+    <None Include="Resources\bag-4.png" />
+    <None Include="Resources\bag-3.png" />
+    <None Include="Resources\bag-2.png" />
+    <None Include="Resources\bag-1.png" />
+    <None Include="Resources\bag.png" />
+    <None Include="Resources\atm-2.png" />
+    <None Include="Resources\atm-1.png" />
+    <None Include="Resources\atm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="igorTransModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>igorTransModel.edmx</DependentUpon>
+      <LastGenOutput>igorTransModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="igorTransModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>igorTransModel.edmx</DependentUpon>
+      <LastGenOutput>igorTransModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

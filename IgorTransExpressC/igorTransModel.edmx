@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="igortransModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="companyid" />
+          </Key>
+          <Property Name="companyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="county" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vat" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="logo" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customers">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="add3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="county" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="account" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invdet">
+          <Key>
+            <PropertyRef Name="invdetid" />
+          </Key>
+          <Property Name="invdetid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="invoiceid" Type="int" Nullable="false" />
+          <Property Name="line" Type="int" Nullable="false" />
+          <Property Name="delivery_date" Type="datetime" Nullable="false" />
+          <Property Name="line_ref" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="delivery_from" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="delivery_to" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="comments" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="line_total" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ref" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invoices">
+          <Key>
+            <PropertyRef Name="invoiceid" />
+          </Key>
+          <Property Name="invoiceid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="int" Nullable="false" />
+          <Property Name="date_created" Type="datetime" Nullable="false" />
+          <Property Name="date_paid" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="vat" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="pdf" Type="varbinary(max)" Nullable="false" />
+          <Property Name="invoice_number" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="total_paid" Type="decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="access_level" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="surname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="position" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'igortrans.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="igortransModelStoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invdet" EntityType="Self.invdet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="invoices" EntityType="Self.invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="igortransModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="companyid" />
+          </Key>
+          <Property Name="companyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="county" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="vat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="county" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="account" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invdet">
+          <Key>
+            <PropertyRef Name="invdetid" />
+          </Key>
+          <Property Name="invdetid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="invoiceid" Type="Int32" Nullable="false" />
+          <Property Name="line" Type="Int32" Nullable="false" />
+          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="line_ref" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="delivery_from" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="delivery_to" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="line_total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ref" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="invoice">
+          <Key>
+            <PropertyRef Name="invoiceid" />
+          </Key>
+          <Property Name="invoiceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="Int32" Nullable="false" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="date_paid" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status" Type="Int16" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="vat" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="pdf" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="invoice_number" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="total_paid" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="access_level" Type="Int16" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="igortransDBcontext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="invdets" EntityType="Self.invdet" />
+          <EntitySet Name="invoices" EntityType="Self.invoice" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="igortransModelStoreContainer" CdmEntityContainer="igortransDBcontext">
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="igortransModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="companyid" ColumnName="companyid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="add1" ColumnName="add1" />
+                <ScalarProperty Name="add2" ColumnName="add2" />
+                <ScalarProperty Name="add3" ColumnName="add3" />
+                <ScalarProperty Name="county" ColumnName="county" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="igortransModel.customer">
+              <MappingFragment StoreEntitySet="customers">
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="add1" ColumnName="add1" />
+                <ScalarProperty Name="add2" ColumnName="add2" />
+                <ScalarProperty Name="add3" ColumnName="add3" />
+                <ScalarProperty Name="county" ColumnName="county" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="account" ColumnName="account" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invdets">
+            <EntityTypeMapping TypeName="igortransModel.invdet">
+              <MappingFragment StoreEntitySet="invdet">
+                <ScalarProperty Name="invdetid" ColumnName="invdetid" />
+                <ScalarProperty Name="invoiceid" ColumnName="invoiceid" />
+                <ScalarProperty Name="line" ColumnName="line" />
+                <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+                <ScalarProperty Name="line_ref" ColumnName="line_ref" />
+                <ScalarProperty Name="delivery_from" ColumnName="delivery_from" />
+                <ScalarProperty Name="delivery_to" ColumnName="delivery_to" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="line_total" ColumnName="line_total" />
+                <ScalarProperty Name="ref" ColumnName="ref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="invoices">
+            <EntityTypeMapping TypeName="igortransModel.invoice">
+              <MappingFragment StoreEntitySet="invoices">
+                <ScalarProperty Name="invoiceid" ColumnName="invoiceid" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="date_paid" ColumnName="date_paid" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="vat" ColumnName="vat" />
+                <ScalarProperty Name="pdf" ColumnName="pdf" />
+                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+                <ScalarProperty Name="total_paid" ColumnName="total_paid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="igortransModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="access_level" ColumnName="access_level" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="igortransModel.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
