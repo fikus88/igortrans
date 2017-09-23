@@ -64,6 +64,8 @@ namespace IgorTransExpressC
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.currencyTextBox1 = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
@@ -109,7 +111,6 @@ namespace IgorTransExpressC
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.currencyTextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimePickerAdv2)).BeginInit();
@@ -649,6 +650,7 @@ namespace IgorTransExpressC
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.button2);
             this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.richTextBox1);
@@ -668,6 +670,26 @@ namespace IgorTransExpressC
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(860, 105);
             this.panel5.TabIndex = 49;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(785, 65);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(55, 23);
+            this.button2.TabIndex = 51;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(725, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 23);
+            this.button1.TabIndex = 50;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -906,9 +928,9 @@ namespace IgorTransExpressC
             this.label10.ForeColor = System.Drawing.Color.SlateBlue;
             this.label10.Location = new System.Drawing.Point(435, 10);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 16);
+            this.label10.Size = new System.Drawing.Size(36, 16);
             this.label10.TabIndex = 9;
-            this.label10.Text = "Subtotal";
+            this.label10.Text = "0.00";
             // 
             // label11
             // 
@@ -925,11 +947,11 @@ namespace IgorTransExpressC
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.SlateBlue;
-            this.label8.Location = new System.Drawing.Point(580, 10);
+            this.label8.Location = new System.Drawing.Point(570, 10);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 16);
+            this.label8.Size = new System.Drawing.Size(36, 16);
             this.label8.TabIndex = 7;
-            this.label8.Text = "VAT";
+            this.label8.Text = "0.00";
             // 
             // label9
             // 
@@ -948,9 +970,9 @@ namespace IgorTransExpressC
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(115, 10);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(90, 16);
+            this.label6.Size = new System.Drawing.Size(36, 16);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Outstanding";
+            this.label6.Text = "0.00";
             // 
             // label7
             // 
@@ -967,11 +989,11 @@ namespace IgorTransExpressC
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Green;
-            this.label4.Location = new System.Drawing.Point(275, 10);
+            this.label4.Location = new System.Drawing.Point(270, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 16);
+            this.label4.Size = new System.Drawing.Size(36, 16);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Paid";
+            this.label4.Text = "0.00";
             // 
             // label5
             // 
@@ -990,9 +1012,9 @@ namespace IgorTransExpressC
             this.label3.ForeColor = System.Drawing.Color.MediumBlue;
             this.label3.Location = new System.Drawing.Point(745, 10);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 16);
+            this.label3.Size = new System.Drawing.Size(36, 16);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Invoice Total";
+            this.label3.Text = "0.00";
             // 
             // label2
             // 
@@ -1140,29 +1162,21 @@ namespace IgorTransExpressC
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(730, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 23);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Invoices
             // 
@@ -1284,5 +1298,6 @@ namespace IgorTransExpressC
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

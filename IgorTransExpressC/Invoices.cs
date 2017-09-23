@@ -24,6 +24,7 @@ namespace IgorTransExpressC
 
         public static List<ButtonAdv> BtnList = new List<ButtonAdv>();
         private List<invoice> InvoiceList = new List<invoice>();
+        private List<invdet> selectedInvoiceDetails = new List<invdet>();
         private invoice SelectedInvoice;
 
         private void Invoices_Load(object sender, EventArgs e)
@@ -204,7 +205,11 @@ namespace IgorTransExpressC
 
         private void ShowInvoice(invoice inv, bool? isNewInvoice = false)
         {
+            isItemEditPanelShown(false);
+            selectedInvoiceDetails.Clear();
             customer cust;
+            listView2.Items.Clear();
+
             using (igortransDBcontext db = new igortransDBcontext())
             {
                 cust = db.customers.Where(c => c.customerid == inv.customerid).FirstOrDefault();
@@ -227,6 +232,36 @@ namespace IgorTransExpressC
             }
             currencyTextBox2.ReadOnly = false;
             currencyTextBox2.DecimalValue = inv.total_paid;
+
+            ShowInvoiceDetails(inv);
+        }
+
+        private void ShowInvoiceDetails(invoice invoice)
+        {
+            using (igortransDBcontext db = new igortransDBcontext())
+            {
+                selectedInvoiceDetails = db.invdets.Where(x => x.invoiceid == invoice.invoiceid).ToList();
+            }
+
+            if (selectedInvoiceDetails.Count != 0)
+
+                foreach (invdet invdet in selectedInvoiceDetails)
+                {
+                    int lineNum = 0;
+
+                    ListViewItem itm = new ListViewItem();
+                    itm.Text = lineNum.ToString();
+                    itm.Tag = invdet.invdetid;
+                    itm.SubItems.Add(invdet.delivery_date.ToString());
+                    itm.SubItems.Add(invdet.line_ref);
+                    itm.SubItems.Add(invdet.delivery_from);
+                    itm.SubItems.Add(invdet.delivery_to);
+                    itm.SubItems.Add(invdet.comments);
+                    itm.SubItems.Add(invdet.line_total.ToString());
+                    itm.SubItems.Add(invdet.@ref);
+
+                    listView2.Items.Add(itm);
+                }
         }
 
         private void buttonAdv4_Click(object sender, EventArgs e) // ADD
@@ -346,6 +381,97 @@ namespace IgorTransExpressC
             if (e.Button == MouseButtons.Right)
             {
                 contextMenuStripEx1.Show(MousePosition);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count == 1)
+            {
+                SaveDetailsRecord(false);
+            }
+            else
+            {
+                SaveDetailsRecord();
+            }
+
+            ShowInvoiceDetails(SelectedInvoice);
+            isItemEditPanelShown(false);
+        }
+
+        private void SaveDetailsRecord(bool? isNew = false)
+        {
+            using (igortransDBcontext db = new igortransDBcontext())
+            {
+                if (isNew == true)
+                {
+                    invdet selectedInvdet = new invdet
+                    {
+                        delivery_date = dateTimePickerAdv3.Value,
+                        line_ref = textBoxExt1.Text,
+                        comments = textBoxExt4.Text,
+                        delivery_from = textBoxExt2.Text,
+                        delivery_to = textBoxExt3.Text,
+                        @ref = richTextBox1.Text,
+                        line_total = Convert.ToDecimal(currencyTextBox2.Text)
+                    };
+                    db.Entry(selectedInvdet).State = System.Data.Entity.EntityState.Added;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    invdet selectedInvdet = db.invdets.Where(x => x.invdetid ==
+                    Convert.ToInt32(listView2.SelectedItems[0].Tag)).FirstOrDefault();
+
+                    selectedInvdet.delivery_date = dateTimePickerAdv3.Value;
+                    selectedInvdet.line_ref = textBoxExt1.Text;
+                    selectedInvdet.comments = textBoxExt4.Text;
+                    selectedInvdet.delivery_from = textBoxExt2.Text;
+                    selectedInvdet.delivery_to = textBoxExt3.Text;
+                    selectedInvdet.@ref = richTextBox1.Text;
+                    selectedInvdet.line_total = Convert.ToDecimal(currencyTextBox2.Text);
+
+                    db.Entry(selectedInvdet).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isItemEditPanelShown(false);
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isItemEditPanelShown(true);
+            ClearDetailsPanel();
+            listView2.SelectedItems.Clear();
+        }
+
+        private void ClearDetailsPanel()
+        {
+            dateTimePickerAdv3.Value = DateTime.Now;
+            textBoxExt1.Text = "";
+            textBoxExt2.Text = "";
+            textBoxExt3.Text = "";
+            textBoxExt4.Text = "";
+            richTextBox1.Text = "";
+            currencyTextBox1.Text = Convert.ToString(0.00M);
+            button1.Enabled = true;
+            button2.Enabled = true;
+        }
+
+        private void isItemEditPanelShown(bool value)
+        {
+            if (value == true)
+            {
+                listView2.Size = new Size(listView2.Size.Width, 405);
+            }
+            else
+            {
+                listView2.Size = new Size(listView2.Size.Width, 295);
+                panel5.SendToBack();
             }
         }
     }
