@@ -33,6 +33,8 @@ namespace IgorTransExpressC
         {
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.currencyTextBox2 = new Syncfusion.Windows.Forms.Tools.CurrencyTextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.dateTimePickerAdv2 = new Syncfusion.Windows.Forms.Tools.DateTimePickerAdv();
@@ -130,6 +132,8 @@ namespace IgorTransExpressC
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel2.Controls.Add(this.materialSingleLineTextField1);
+            this.panel2.Controls.Add(this.materialLabel4);
             this.panel2.Controls.Add(this.currencyTextBox2);
             this.panel2.Controls.Add(this.materialLabel3);
             this.panel2.Controls.Add(this.dateTimePickerAdv2);
@@ -163,12 +167,44 @@ namespace IgorTransExpressC
             this.panel2.Size = new System.Drawing.Size(870, 225);
             this.panel2.TabIndex = 33;
             // 
+            // materialSingleLineTextField1
+            // 
+            this.materialSingleLineTextField1.Depth = 0;
+            this.materialSingleLineTextField1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialSingleLineTextField1.Hint = "";
+            this.materialSingleLineTextField1.Location = new System.Drawing.Point(620, 160);
+            this.materialSingleLineTextField1.MaxLength = 32767;
+            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
+            this.materialSingleLineTextField1.PasswordChar = '\0';
+            this.materialSingleLineTextField1.ReadOnly = true;
+            this.materialSingleLineTextField1.SelectedText = "";
+            this.materialSingleLineTextField1.SelectionLength = 0;
+            this.materialSingleLineTextField1.SelectionStart = 0;
+            this.materialSingleLineTextField1.Size = new System.Drawing.Size(230, 23);
+            this.materialSingleLineTextField1.TabIndex = 42;
+            this.materialSingleLineTextField1.TabStop = false;
+            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(470, 160);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(114, 19);
+            this.materialLabel4.TabIndex = 41;
+            this.materialLabel4.Text = "Invoice Number";
+            // 
             // currencyTextBox2
             // 
             this.currencyTextBox2.BackGroundColor = System.Drawing.SystemColors.Window;
             this.currencyTextBox2.BeforeTouchSize = new System.Drawing.Size(205, 20);
             this.currencyTextBox2.DecimalValue = new decimal(new int[] {
-            200,
+            0,
             0,
             0,
             131072});
@@ -180,7 +216,7 @@ namespace IgorTransExpressC
             this.currencyTextBox2.Size = new System.Drawing.Size(160, 22);
             this.currencyTextBox2.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.currencyTextBox2.TabIndex = 40;
-            this.currencyTextBox2.Text = "£2.00";
+            this.currencyTextBox2.Text = "£0.00";
             // 
             // materialLabel3
             // 
@@ -855,6 +891,7 @@ namespace IgorTransExpressC
             this.columnHeader8,
             this.columnHeader9});
             this.listView2.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView2.FullRowSelect = true;
             this.listView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView2.HideSelection = false;
             this.listView2.Location = new System.Drawing.Point(5, 5);
@@ -920,6 +957,7 @@ namespace IgorTransExpressC
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(860, 30);
             this.panel4.TabIndex = 34;
+            this.panel4.Visible = false;
             // 
             // label10
             // 
@@ -1044,6 +1082,7 @@ namespace IgorTransExpressC
             this.buttonAdv5.TabIndex = 46;
             this.buttonAdv5.Text = "SAVE";
             this.buttonAdv5.UseVisualStyle = true;
+            this.buttonAdv5.Click += new System.EventHandler(this.buttonAdv5_Click_1);
             // 
             // buttonAdv3
             // 
@@ -1162,20 +1201,20 @@ namespace IgorTransExpressC
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             // 
             // Invoices
@@ -1299,5 +1338,7 @@ namespace IgorTransExpressC
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
     }
 }

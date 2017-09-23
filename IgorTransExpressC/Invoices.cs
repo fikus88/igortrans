@@ -26,11 +26,38 @@ namespace IgorTransExpressC
         private List<invoice> InvoiceList = new List<invoice>();
         private List<invdet> selectedInvoiceDetails = new List<invdet>();
         private invoice SelectedInvoice;
+        private customer selectedCustomer;
+
+        private event RecalcAsyncSingleHandler RecalcAsyncSingleCaller;
+
+        private delegate void RecalcAsyncSingleHandler();
+
+        private void RecalcAsyncSingle()
+        {
+            ;
+            label3.Text = string.Format("{0:0,0.00}", CalcTotal());
+            label8.Text = string.Format("{0:0,0.00}", CalcVat());
+            label10.Text = string.Format("{0:0,0.00}", CalcSubtotal());
+            label4.Text = string.Format("{0:0,0.00}", CalcPaid());
+            label6.Text = string.Format("{0:0,0.00}", CalcOustanding());
+
+            RecalcAsyncTotal();
+        }
+
+        private event RecalcAsyncTotalHandler RecalcAsyncTotalCaller;
+
+        private delegate void RecalcAsyncTotalHandler();
+
+        private void RecalcAsyncTotal()
+        {
+        }
 
         private void Invoices_Load(object sender, EventArgs e)
         {
+            this.RecalcAsyncSingleCaller += RecalcAsyncSingle;
+            this.RecalcAsyncTotalCaller += RecalcAsyncTotal;
             BtnList.Clear();
-
+            isItemEditPanelShown(false);
             BtnList.Add(buttonAdv1);
             BtnList.Add(buttonAdv2);
             BtnList.Add(buttonAdv3);
@@ -43,6 +70,7 @@ namespace IgorTransExpressC
             ReloadInvoicesList();
             panel1.Visible = false;
             panel2.Visible = false;
+            panel4.Visible = false;
         }
 
         private void ReloadInvoices()
@@ -50,6 +78,7 @@ namespace IgorTransExpressC
             using (igortransDBcontext db = new igortransDBcontext())
             {
                 InvoiceList = db.invoices.ToList();
+                RecalcAsyncTotalCaller();
             }
         }
 
@@ -78,11 +107,11 @@ namespace IgorTransExpressC
                         break;
 
                     case 1:
-                        itm.ForeColor = Color.Green;
+                        itm.ForeColor = Color.Orange;
                         break;
 
                     case 2:
-                        itm.ForeColor = Color.Orange;
+                        itm.ForeColor = Color.Green;
                         break;
                 }
 
@@ -120,9 +149,10 @@ namespace IgorTransExpressC
             materialSingleLineTextField12.ReadOnly = true;
             materialSingleLineTextField10.ReadOnly = true;
             materialSingleLineTextField8.ReadOnly = true;
+            materialSingleLineTextField1.ReadOnly = true;
             dateTimePickerAdv1.ReadOnly = true;
             dateTimePickerAdv2.ReadOnly = panel1val;
-            currencyTextBox2.ReadOnly = true;
+            currencyTextBox2.ReadOnly = panel1val;
 
             panel2.Enabled = panel2val;
 
@@ -201,6 +231,8 @@ namespace IgorTransExpressC
             materialSingleLineTextField12.Text = Customer.country;
             materialSingleLineTextField10.Text = Customer.telephone;
             materialSingleLineTextField8.Text = Customer.email;
+
+            selectedCustomer = Customer;
         }
 
         private void ShowInvoice(invoice inv, bool? isNewInvoice = false)
@@ -230,38 +262,43 @@ namespace IgorTransExpressC
                 dateTimePickerAdv2.Format = DateTimePickerFormat.Custom;
                 dateTimePickerAdv2.Text = "";
             }
+            materialSingleLineTextField1.Text = inv.invoice_number;
+            materialSingleLineTextField1.Font = new Font(materialSingleLineTextField1.Font, FontStyle.Bold | FontStyle.Italic);
             currencyTextBox2.ReadOnly = false;
             currencyTextBox2.DecimalValue = inv.total_paid;
-
+            SelectedInvoice = inv;
+            panel4.Visible = true;
             ShowInvoiceDetails(inv);
         }
 
         private void ShowInvoiceDetails(invoice invoice)
         {
+            listView2.Items.Clear();
             using (igortransDBcontext db = new igortransDBcontext())
             {
                 selectedInvoiceDetails = db.invdets.Where(x => x.invoiceid == invoice.invoiceid).ToList();
             }
 
             if (selectedInvoiceDetails.Count != 0)
-
+            {
                 foreach (invdet invdet in selectedInvoiceDetails)
                 {
-                    int lineNum = 0;
-
                     ListViewItem itm = new ListViewItem();
-                    itm.Text = lineNum.ToString();
+                    itm.Text = invdet.line.ToString();
                     itm.Tag = invdet.invdetid;
-                    itm.SubItems.Add(invdet.delivery_date.ToString());
+                    itm.SubItems.Add(invdet.delivery_date.ToShortDateString());
                     itm.SubItems.Add(invdet.line_ref);
                     itm.SubItems.Add(invdet.delivery_from);
                     itm.SubItems.Add(invdet.delivery_to);
                     itm.SubItems.Add(invdet.comments);
-                    itm.SubItems.Add(invdet.line_total.ToString());
+                    itm.SubItems.Add(string.Format("{0:0,0.00}", invdet.line_total));
                     itm.SubItems.Add(invdet.@ref);
 
                     listView2.Items.Add(itm);
                 }
+            }
+
+            RecalcAsyncSingle();
         }
 
         private void buttonAdv4_Click(object sender, EventArgs e) // ADD
@@ -325,6 +362,7 @@ namespace IgorTransExpressC
             {
                 materialSingleLineTextField7.Text = custSearch.SelectedCustomer.account;
                 ShowCustomer(custSearch.SelectedCustomer);
+                SaveInvoice(true);
             }
             else
             {
@@ -392,11 +430,14 @@ namespace IgorTransExpressC
             }
             else
             {
-                SaveDetailsRecord();
+                SaveDetailsRecord(true);
             }
 
             ShowInvoiceDetails(SelectedInvoice);
             isItemEditPanelShown(false);
+
+            ReloadInvoices();
+            ReloadInvoicesList();
         }
 
         private void SaveDetailsRecord(bool? isNew = false)
@@ -405,31 +446,41 @@ namespace IgorTransExpressC
             {
                 if (isNew == true)
                 {
+                    int ln = 1;
+                    if (db.invdets.Count(x => x.invoiceid == SelectedInvoice.invoiceid) > 0)
+                    {
+                        ln = db.invdets.Where(x => x.invoiceid == SelectedInvoice.invoiceid).Max(x => x.line) + 1;
+                    }
+
                     invdet selectedInvdet = new invdet
                     {
+                        line = ln,
+                        invoiceid = SelectedInvoice.invoiceid,
                         delivery_date = dateTimePickerAdv3.Value,
                         line_ref = textBoxExt1.Text,
                         comments = textBoxExt4.Text,
                         delivery_from = textBoxExt2.Text,
                         delivery_to = textBoxExt3.Text,
                         @ref = richTextBox1.Text,
-                        line_total = Convert.ToDecimal(currencyTextBox2.Text)
+                        line_total = currencyTextBox1.DecimalValue
                     };
                     db.Entry(selectedInvdet).State = System.Data.Entity.EntityState.Added;
                     db.SaveChanges();
                 }
                 else
                 {
-                    invdet selectedInvdet = db.invdets.Where(x => x.invdetid ==
-                    Convert.ToInt32(listView2.SelectedItems[0].Tag)).FirstOrDefault();
+                    int currentInvdetid = Convert.ToInt32(listView2.SelectedItems[0].Tag);
+                    invdet selectedInvdet = db.invdets.Where(x => x.invdetid == currentInvdetid
+                    ).FirstOrDefault();
 
+                    selectedInvdet.invoiceid = SelectedInvoice.invoiceid;
                     selectedInvdet.delivery_date = dateTimePickerAdv3.Value;
                     selectedInvdet.line_ref = textBoxExt1.Text;
                     selectedInvdet.comments = textBoxExt4.Text;
                     selectedInvdet.delivery_from = textBoxExt2.Text;
                     selectedInvdet.delivery_to = textBoxExt3.Text;
                     selectedInvdet.@ref = richTextBox1.Text;
-                    selectedInvdet.line_total = Convert.ToDecimal(currencyTextBox2.Text);
+                    selectedInvdet.line_total = Convert.ToDecimal(currencyTextBox1.Text);
 
                     db.Entry(selectedInvdet).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
@@ -466,21 +517,147 @@ namespace IgorTransExpressC
         {
             if (value == true)
             {
-                listView2.Size = new Size(listView2.Size.Width, 405);
+                listView2.Size = new Size(listView2.Size.Width, 295);
             }
             else
             {
-                listView2.Size = new Size(listView2.Size.Width, 295);
-                panel5.SendToBack();
+                listView2.Size = new Size(listView2.Size.Width, 405);
             }
+
+            panel5.Visible = value;
+        }
+
+        private void buttonAdv5_Click(object sender, EventArgs e) //SAVE
+        {
+            SaveInvoice(false);
+            RecalcAsyncSingleCaller();
+        }
+
+        private void SaveInvoice(bool isNew)
+        {
+            if (isNew != true)
+            {
+                SelectedInvoice.customerid = selectedCustomer.customerid;
+                SelectedInvoice.date_created = dateTimePickerAdv1.Value;
+                SelectedInvoice.date_paid = dateTimePickerAdv2.Value;
+                SelectedInvoice.total_paid = currencyTextBox2.DecimalValue;
+                SelectedInvoice.status = CalcInvoiceStatus();
+                SelectedInvoice.vat = CalcVat();
+                SelectedInvoice.pdf = null;
+                SelectedInvoice.invoice_number = materialSingleLineTextField1.Text;
+                SelectedInvoice.total = CalcTotal();
+
+                using (igortransDBcontext db = new igortransDBcontext())
+                {
+                    db.Entry(SelectedInvoice).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                    SelectedInvoice = db.invoices.Where(x => x.invoiceid == SelectedInvoice.invoiceid).FirstOrDefault();
+                }
+            }
+            else
+            {
+                invoice newInvoice = new invoice
+                {
+                    customerid = selectedCustomer.customerid,
+                    date_created = dateTimePickerAdv1.Value,
+                    date_paid = dateTimePickerAdv2.Value,
+                    status = 0,
+                    total = 0.00M,
+                    vat = 0.00M,
+                    pdf = null,
+                    invoice_number = GetNextInvoiceNumber().ToString(),
+                    total_paid = 0.00M
+                };
+
+                using (igortransDBcontext db = new igortransDBcontext())
+                {
+                    db.Entry(newInvoice).State = System.Data.Entity.EntityState.Added;
+                    db.SaveChanges();
+                    SelectedInvoice = db.invoices.Where(x => x.invoiceid == db.invoices.Max(xx => x.invoiceid)).FirstOrDefault();
+                }
+            }
+        }
+
+        private short CalcInvoiceStatus()
+        {
+            decimal totalToPay = 0.00M;
+
+            if (selectedInvoiceDetails.Count > 0)
+            {
+                totalToPay = selectedInvoiceDetails.Sum(x => (x.line_total * 1.2M));
+
+                if (totalToPay == SelectedInvoice.total_paid)
+                {
+                    return 2;
+                }
+                else if (totalToPay > 0 && SelectedInvoice.total_paid == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+                {
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private decimal CalcVat()
+        {
+            return (selectedInvoiceDetails.Sum(x => x.line_total * 1.2M) - selectedInvoiceDetails.Sum(x => x.line_total));
+        }
+
+        private long GetNextInvoiceNumber()
+        {
+            long curNum = IgorTransExpressC.Properties.Settings.Default.InvoiceNum;
+            Properties.Settings.Default.InvoiceNum += 1;
+            Properties.Settings.Default.Save();
+
+            return curNum;
+        }
+
+        private decimal CalcTotal()
+        {
+            return selectedInvoiceDetails.Sum(x => (x.line_total * 1.2M));
+        }
+
+        private decimal CalcSubtotal()
+        {
+            return selectedInvoiceDetails.Sum(x => (x.line_total));
+        }
+
+        private decimal CalcOustanding()
+        {
+            return (selectedInvoiceDetails.Sum(x => (x.line_total * 1.2M)) - SelectedInvoice.total_paid);
+        }
+
+        private decimal CalcPaid()
+        {
+            return SelectedInvoice.total_paid;
+        }
+
+        private void buttonAdv5_Click_1(object sender, EventArgs e) // SAVE
+        {
+            SaveInvoice(false);
+            ReloadInvoices();
+            ReloadInvoicesList();
+            LockFields(true, true);
+            FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.View, this.Name);
+            panel1.BackColor = Color.Gainsboro;
+            panel2.BackColor = Color.Gainsboro;
+            RecalcAsyncSingleCaller();
         }
     }
 }
 
 // TODO :
-// Context Menu : List before Y 405, after Y 295 display panel5
-// Handle add,edit,delete invdet
-// handle live calculation of invoice
-// handle live calc of total invoices
+// Handle delete invdet
+// handle live calculation of all invoices
+// handle vmode to prevent right click on details and many ohers in future
 
 // Next stage : PDF read, write, save  ///////////////////////////// 

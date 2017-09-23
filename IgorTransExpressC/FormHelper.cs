@@ -9,6 +9,7 @@ using Syncfusion.Windows.Forms;
 namespace IgorTransExpressC
 {
     internal class FormHelper
+
     {
         public static void BtnEnabled(ButtonAdv btn, bool val, bool? isVisible = true)
         {

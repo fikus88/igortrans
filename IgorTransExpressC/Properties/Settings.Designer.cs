@@ -22,5 +22,17 @@ namespace IgorTransExpressC.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100001")]
+        public long InvoiceNum {
+            get {
+                return ((long)(this["InvoiceNum"]));
+            }
+            set {
+                this["InvoiceNum"] = value;
+            }
+        }
     }
 }
