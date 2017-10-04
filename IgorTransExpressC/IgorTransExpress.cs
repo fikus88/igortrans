@@ -96,7 +96,7 @@ namespace IgorTransExpressC
             cm.Show();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void toolStripButton5_Click(object sender, EventArgs e)
         {
             foreach (Form f in this.MdiChildren)
             {
@@ -108,6 +108,24 @@ namespace IgorTransExpressC
 
             this.IsMdiContainer = true;
             Invoices cm = new Invoices()
+            {
+                MdiParent = this
+            };
+            cm.Show();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f.Name == "Invoice_Template")
+                {
+                    return;
+                }
+            }
+
+            this.IsMdiContainer = true;
+            Invoice_Template cm = new Invoice_Template()
             {
                 MdiParent = this
             };

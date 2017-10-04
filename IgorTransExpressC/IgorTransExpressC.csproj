@@ -418,6 +418,12 @@
     <Compile Include="invdet.cs">
       <DependentUpon>igorTransModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Invoice Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Invoice Template.Designer.cs">
+      <DependentUpon>Invoice Template.cs</DependentUpon>
+    </Compile>
     <Compile Include="invoice.cs">
       <DependentUpon>igorTransModel.tt</DependentUpon>
     </Compile>
@@ -457,6 +463,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IgorTransExpress.resx">
       <DependentUpon>IgorTransExpress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice Template.resx">
+      <DependentUpon>Invoice Template.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Invoices.resx">
       <DependentUpon>Invoices.cs</DependentUpon>
