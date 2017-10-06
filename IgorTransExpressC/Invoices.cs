@@ -193,31 +193,6 @@ namespace IgorTransExpressC
             listView2.Items.Clear();
         }
 
-        private void MaterialListView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listView1.SelectedItems.Count == 1)
-            {
-                invoice selectedInvoice = InvoiceList.Where(inv => inv.invoiceid ==
-                Convert.ToInt32(listView1.SelectedItems[0].Tag)).FirstOrDefault();
-                if (selectedInvoice != null)
-                {
-                    ShowInvoice(selectedInvoice);
-                    panel1.Visible = true;
-                    panel2.Visible = true;
-                    FormHelper.AreRaisedButtonsVisible(BtnList, true);
-                    LockFields(true, true);
-                    FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.View, this.Name);
-                }
-            }
-            else
-            {
-                panel1.Visible = false;
-                panel2.Visible = false;
-
-                FormHelper.AreRaisedButtonsVisible(BtnList, false);
-            }
-        }
-
         private void ShowCustomer(customer Customer)
         {
             materialSingleLineTextField7.Text = Customer.account;
@@ -301,7 +276,34 @@ namespace IgorTransExpressC
             RecalcAsyncSingle();
         }
 
-        private void buttonAdv4_Click(object sender, EventArgs e) // ADD
+        private void MaterialListView1_SelectedIndexChanged(object sender, EventArgs e) // SELECT INVOICE
+        {
+            if (listView1.SelectedItems.Count == 1)
+            {
+                invoice selectedInvoice = InvoiceList.Where(inv => inv.invoiceid ==
+                Convert.ToInt32(listView1.SelectedItems[0].Tag)).FirstOrDefault();
+                if (selectedInvoice != null)
+                {
+                    ShowInvoice(selectedInvoice);
+                    panel1.Visible = true;
+                    panel2.Visible = true;
+                    FormHelper.AreRaisedButtonsVisible(BtnList, true);
+                    LockFields(true, true);
+                    FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.View, this.Name);
+                }
+            }
+            else
+            {
+                panel1.Visible = false;
+                panel2.Visible = false;
+
+                FormHelper.AreRaisedButtonsVisible(BtnList, false);
+            }
+        }
+
+     
+
+        private void buttonAdv4_Click(object sender, EventArgs e) // ADD INVOICE
         {
             ClearScreen();
             LockFields(false, true, true);
@@ -313,12 +315,12 @@ namespace IgorTransExpressC
             materialSingleLineTextField7.Focus();
         }
 
-        private void materialSingleLineTextField7_Validating(object sender, CancelEventArgs e)
+        private void materialSingleLineTextField7_Validating(object sender, CancelEventArgs e) //CUSTOMER VALIDATION EVENT
         {
             ValidateCustomer();
         }
 
-        private void AccountFieldEnterKey(object sender, KeyEventArgs e)
+        private void AccountFieldEnterKey(object sender, KeyEventArgs e) //CUSTOMER VALIDATION ENTER EVENT
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -326,7 +328,7 @@ namespace IgorTransExpressC
             }
         }
 
-        private void ValidateCustomer()
+        private void ValidateCustomer() // CUSTOMER VALIDATION ROUTINE
         {
             if (materialSingleLineTextField7.Text != "")
             {
@@ -356,7 +358,7 @@ namespace IgorTransExpressC
             }
         }
 
-        private void CustomerSearchClosed(object sender, FormClosingEventArgs e)
+        private void CustomerSearchClosed(object sender, FormClosingEventArgs e) //CUST SEARCH CLOSED EVENT
         {
             if (custSearch.SelectedCustomer != null)
             {
@@ -371,7 +373,7 @@ namespace IgorTransExpressC
             }
         }
 
-        private void buttonAdv2_Click(object sender, EventArgs e) //EDIT
+        private void buttonAdv2_Click(object sender, EventArgs e) //EDIT INVOICE
         {
             LockFields(false, true);
             FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.Edit, this.Name);
@@ -379,7 +381,7 @@ namespace IgorTransExpressC
             panel2.BackColor = Color.WhiteSmoke;
         }
 
-        private void buttonAdv1_Click(object sender, EventArgs e) // DELETE
+        private void buttonAdv1_Click(object sender, EventArgs e) // DELETE INVOICE
         {
             if (listView1.SelectedItems.Count == 1)
             {
@@ -403,7 +405,7 @@ namespace IgorTransExpressC
             }
         }
 
-        private void buttonAdv3_Click(object sender, EventArgs e) // CANCEL
+        private void buttonAdv3_Click(object sender, EventArgs e) // CANCEL INVOICE EDITING
         {
             LockFields(true, true);
 
@@ -414,7 +416,7 @@ namespace IgorTransExpressC
             panel2.BackColor = Color.Gainsboro;
         }
 
-        private void InvdetListMouseClick(object sender, MouseEventArgs e)
+        private void InvdetListMouseClick(object sender, MouseEventArgs e) // SELECTED INV DETAILS
         {
             if (e.Button == MouseButtons.Right)
             {
@@ -422,7 +424,7 @@ namespace IgorTransExpressC
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //SAVE INV DETAILS
         {
             if (listView2.SelectedItems.Count == 1)
             {
@@ -440,7 +442,7 @@ namespace IgorTransExpressC
             ReloadInvoicesList();
         }
 
-        private void SaveDetailsRecord(bool? isNew = false)
+        private void SaveDetailsRecord(bool? isNew = false) // SAVE DETAILS METHOD
         {
             using (igortransDBcontext db = new igortransDBcontext())
             {
@@ -488,12 +490,12 @@ namespace IgorTransExpressC
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //CANCEL EDITING DETAILS
         {
             isItemEditPanelShown(false);
         }
 
-        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addToolStripMenuItem_Click(object sender, EventArgs e) // CONTEXT ADD DETAIL
         {
             isItemEditPanelShown(true);
             ClearDetailsPanel();
@@ -527,7 +529,7 @@ namespace IgorTransExpressC
             panel5.Visible = value;
         }
 
-        private void buttonAdv5_Click(object sender, EventArgs e) //SAVE
+        private void buttonAdv5_Click(object sender, EventArgs e) //SAVE 
         {
             SaveInvoice(false);
             RecalcAsyncSingleCaller();
@@ -578,6 +580,48 @@ namespace IgorTransExpressC
             }
         }
 
+        private void buttonAdv5_Click_1(object sender, EventArgs e) // SAVE
+        {
+            SaveInvoice(false);
+            ReloadInvoices();
+            ReloadInvoicesList();
+            LockFields(true, true);
+            FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.View, this.Name);
+            panel1.BackColor = Color.Gainsboro;
+            panel2.BackColor = Color.Gainsboro;
+            RecalcAsyncSingleCaller();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) //DELETE DETAIL
+        {
+
+            if (listView2.SelectedItems.Count == 1)
+            {
+
+
+                using (igortransDBcontext db = new igortransDBcontext())
+                {
+
+                    int selectedInvdetid = Convert.ToInt32(listView2.SelectedItems[0].Tag);
+                    invdet selectedInvdet = db.invdets.Where(x => x.invdetid == selectedInvdetid).FirstOrDefault();
+
+                    if (selectedInvdet != null)
+                    {
+                        db.Entry(selectedInvdet).State = System.Data.Entity.EntityState.Deleted;
+                        db.SaveChanges();
+
+                        ShowInvoiceDetails(SelectedInvoice);
+                        RecalcAsyncSingleCaller();
+
+
+                    }
+                }
+
+            }
+        }
+
+
+        #region "Calculcations"
         private short CalcInvoiceStatus()
         {
             decimal totalToPay = 0.00M;
@@ -586,7 +630,7 @@ namespace IgorTransExpressC
             {
                 totalToPay = selectedInvoiceDetails.Sum(x => (x.line_total * 1.2M));
 
-                if (totalToPay == SelectedInvoice.total_paid)
+                if (totalToPay == SelectedInvoice.total_paid || totalToPay < SelectedInvoice.total_paid)
                 {
                     return 2;
                 }
@@ -641,23 +685,13 @@ namespace IgorTransExpressC
             return SelectedInvoice.total_paid;
         }
 
-        private void buttonAdv5_Click_1(object sender, EventArgs e) // SAVE
-        {
-            SaveInvoice(false);
-            ReloadInvoices();
-            ReloadInvoicesList();
-            LockFields(true, true);
-            FormHelper.ViewModeButtons(BtnList, FormHelper.ViewMode.View, this.Name);
-            panel1.BackColor = Color.Gainsboro;
-            panel2.BackColor = Color.Gainsboro;
-            RecalcAsyncSingleCaller();
-        }
+        #endregion
+
+
+      
     }
 }
 
 // TODO :
-// Handle delete invdet
-// handle live calculation of all invoices
-// handle vmode to prevent right click on details and many ohers in future
-
-// Next stage : PDF read, write, save  ///////////////////////////// 
+// handle live calculation of all invoices // for now not necessary
+// add show pdf, print pdf, email pdf

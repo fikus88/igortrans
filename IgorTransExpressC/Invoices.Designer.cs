@@ -216,7 +216,7 @@ namespace IgorTransExpressC
             this.currencyTextBox2.Size = new System.Drawing.Size(160, 22);
             this.currencyTextBox2.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.currencyTextBox2.TabIndex = 40;
-            this.currencyTextBox2.Text = "£0.00";
+            this.currencyTextBox2.Text = "$0.00";
             // 
             // materialLabel3
             // 
@@ -761,7 +761,7 @@ namespace IgorTransExpressC
             this.currencyTextBox1.Size = new System.Drawing.Size(100, 21);
             this.currencyTextBox1.Style = Syncfusion.Windows.Forms.Tools.TextBoxExt.theme.Default;
             this.currencyTextBox1.TabIndex = 47;
-            this.currencyTextBox1.Text = "£0.00";
+            this.currencyTextBox1.Text = "$0.00";
             // 
             // autoLabel6
             // 
@@ -1195,27 +1195,28 @@ namespace IgorTransExpressC
             this.deleteToolStripMenuItem});
             this.contextMenuStripEx1.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(236)))), ((int)(((byte)(249)))));
             this.contextMenuStripEx1.Name = "contextMenuStripEx1";
-            this.contextMenuStripEx1.Size = new System.Drawing.Size(108, 70);
+            this.contextMenuStripEx1.Size = new System.Drawing.Size(153, 92);
             this.contextMenuStripEx1.Style = Syncfusion.Windows.Forms.Tools.ContextMenuStripEx.ContextMenuStyle.Default;
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addToolStripMenuItem.Text = "Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // Invoices
             // 

@@ -31,7 +31,7 @@ namespace IgorTransExpressC
         private void Form_Load(object sender, EventArgs e)
         {
 
-            label1.Font = new Font(materialLabel5.Font.FontFamily, 16, FontStyle.Regular);
+           
 
             //Create a new PDF document.
 
