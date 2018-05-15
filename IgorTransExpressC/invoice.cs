@@ -24,5 +24,6 @@ namespace IgorTransExpressC
         public byte[] pdf { get; set; }
         public string invoice_number { get; set; }
         public decimal total_paid { get; set; }
+        public string @ref { get; set; }
     }
 }

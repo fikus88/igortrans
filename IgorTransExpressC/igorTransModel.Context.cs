@@ -30,6 +30,5 @@ namespace IgorTransExpressC
         public virtual DbSet<invdet> invdets { get; set; }
         public virtual DbSet<invoice> invoices { get; set; }
         public virtual DbSet<user> users { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }
