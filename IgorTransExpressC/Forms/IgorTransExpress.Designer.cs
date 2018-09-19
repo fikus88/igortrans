@@ -45,11 +45,11 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.btnImport = new System.Windows.Forms.ToolStripButton();
             this.statusStripLabel1 = new Syncfusion.Windows.Forms.Tools.StatusStripLabel();
             this.statusStripEx1 = new Syncfusion.Windows.Forms.Tools.StatusStripEx();
             this.miniToolBar1 = new Syncfusion.Windows.Forms.Tools.MiniToolBar();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripEx1.SuspendLayout();
             this.statusStripEx1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.toolStripButton3,
             this.toolStripButton4,
             this.toolStripButton5,
-            this.toolStripButton2});
+            this.btnImport});
             this.toolStripEx1.LauncherStyle = Syncfusion.Windows.Forms.Tools.LauncherStyle.Metro;
             this.toolStripEx1.Location = new System.Drawing.Point(0, 0);
             this.toolStripEx1.Name = "toolStripEx1";
@@ -107,15 +107,25 @@
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // toolStripButton2
+            // toolStripButton5
             // 
-            this.toolStripButton2.Image = global::IgorTransExpressC.Properties.Resources.signature;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(60, 35);
-            this.toolStripButton2.Text = "Template";
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton5.Image = global::IgorTransExpressC.Properties.Resources.increase;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(54, 35);
+            this.toolStripButton5.Text = "Invoices";
+            this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton5.Click += toolStripButton5_Click;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Image = global::IgorTransExpressC.Properties.Resources.pie_chart;
+            this.btnImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(93, 35);
+            this.btnImport.Text = "Import Invoices";
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImport.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // statusStripLabel1
             // 
@@ -145,16 +155,6 @@
             this.miniToolBar1.Name = "miniToolBar1";
             this.miniToolBar1.Size = new System.Drawing.Size(24, 24);
             // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.Image = global::IgorTransExpressC.Properties.Resources.increase;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(54, 35);
-            this.toolStripButton5.Text = "Invoices";
-            this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton5.Click += toolStripButton5_Click;
-            // 
             // IgorTransExpress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,12 +182,15 @@
             this.PerformLayout();
 
         }
+
+       
+
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx1;
         private Syncfusion.Windows.Forms.Tools.StatusStripLabel statusStripLabel1;
         private Syncfusion.Windows.Forms.Tools.StatusStripEx statusStripEx1;
         private Syncfusion.Windows.Forms.Tools.MiniToolBar miniToolBar1;
         private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButton2;
+        private ToolStripButton btnImport;
         private ToolStripButton toolStripButton3;
         private ToolStripButton toolStripButton4;
         private ToolStripButton toolStripButton5;

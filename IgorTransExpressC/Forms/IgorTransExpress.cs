@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
 using MaterialSkin;
+using IgorTransExpressC.Forms;
 
 namespace IgorTransExpressC
 {
@@ -38,8 +39,6 @@ namespace IgorTransExpressC
         {
             Application.Exit();
         }
-
-
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -118,18 +117,18 @@ namespace IgorTransExpressC
         {
             foreach (Form f in this.MdiChildren)
             {
-                if (f.Name == "Invoice_Template")
+                if (f.Name == "frmImport")
                 {
                     return;
                 }
             }
 
             this.IsMdiContainer = true;
-            Invoice_Template cm = new Invoice_Template()
+            frmImport imp = new frmImport()
             {
                 MdiParent = this
             };
-            cm.Show();
+            imp.Show();
         }
     }
 }
